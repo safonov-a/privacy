@@ -34,10 +34,32 @@ what users were told. Note what this means for wording: no page may describe its
 because the same bytes are also the archived copy — instead every version states, in its header,
 the one address at which the version in force is always published.
 
-Apps that shipped earlier keep pointing at `index.html` and will show the new text. That is
-intended: a privacy policy describes what the operator does now, not what it did when someone
-installed the app. The dated copies exist so that what applied earlier can still be shown, not so
-that old apps keep seeing it.
+## Old app versions are still in use, and the policy must stay true for them
+
+Every released build links to `index.html` — the URL is compiled into the binary and cannot be
+changed afterwards, and a store listing has one such field. So whatever is published there is what
+someone running a two-year-old build reads.
+
+**A policy that describes only the newest release is therefore wrong for everyone who has not
+updated.** The direction of the error matters less than people assume: a text that understates
+collection hides processing that is actually happening, and a text that overstates it tells someone
+their app does something it does not. Both are false statements to a user about the software on
+their device.
+
+So when a new app version changes what is stored or sent, the policy says what **each** version
+does, keyed by app version, and keeps saying it for as long as the older ones are in use. A
+description is only dropped once the version it covers is no longer plausibly installed anywhere.
+
+This is a different axis from the dated files, and the two are easy to confuse:
+
+| | What it is | Changes? |
+| --- | --- | --- |
+| `index.html` | what is true of every version in use, today | yes — corrections and new app versions |
+| `<date>.html` | what was *published* on that date | never |
+
+The dated copies are evidence of what users were told. They are not per-version policies, and the
+app must not link to one: someone on an old build needs the current, corrected description of their
+version, not a frozen page that can no longer be fixed.
 
 A typo or a clarification that does not change what is collected is not a new version: edit in
 place and move the "Last updated" date only.
