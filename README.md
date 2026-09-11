@@ -17,13 +17,27 @@ and no crash reporting at all.
 
 ## Changing a policy
 
-The URL in a store listing points at `index.html` and must keep working, so:
+Every version is published at **two** addresses at the same moment: `index.html`, which the store
+listing and the shipped apps point at and which therefore must keep working, and `<effective
+date>.html`, which is never touched again. Publishing both together is what keeps the archive from
+depending on anyone remembering to copy a file before overwriting it.
 
-1. Copy the current `index.html` to `<effective date>.html` — that file is then **never edited
-   again**. A superseded version that can still change is not evidence of what users were told.
-2. Write the new text into `index.html`, with a new version number and effective date.
-3. Add the superseded version to the "Changes to this policy" section, so a reader can see what
-   applied at any earlier point.
+To issue a new version:
+
+1. Write the new text into `index.html` with a new version number and effective date, and add the
+   new version to the list at the end of "Changes to this policy" — keeping every earlier entry.
+2. Copy the finished `index.html` to `<effective date>.html`.
+3. Link the new version from the site's own landing page.
+
+Never edit a dated file afterwards. A superseded version that can still change is not evidence of
+what users were told. Note what this means for wording: no page may describe itself as "current",
+because the same bytes are also the archived copy — instead every version states, in its header,
+the one address at which the version in force is always published.
+
+Apps that shipped earlier keep pointing at `index.html` and will show the new text. That is
+intended: a privacy policy describes what the operator does now, not what it did when someone
+installed the app. The dated copies exist so that what applied earlier can still be shown, not so
+that old apps keep seeing it.
 
 A typo or a clarification that does not change what is collected is not a new version: edit in
 place and move the "Last updated" date only.
