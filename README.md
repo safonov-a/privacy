@@ -6,7 +6,7 @@ The published privacy policies for GreenKey Universe apps, served by GitHub Page
 ## Layout
 
 ```
-<app>/<platform>/v<n>.html      the policy for a range of app versions - what those builds link to
+<app>/<platform>/v<n>.html      the policy for a run of releases - what those builds link to
 <app>/<platform>/index.html     a copy of the newest v<n>.html - what the store listing points at
 ```
 
@@ -19,8 +19,14 @@ and no crash reporting at all.
 
 A privacy policy has to be true about the software the reader is actually running. People stay on
 old builds for years, and the URL is compiled into the binary — it cannot be changed afterwards. So
-every build links to the document for its own version range, and that document keeps describing
-those versions for as long as they are in use.
+every build links to the document written for it, and that document keeps describing those
+releases for as long as they are in use.
+
+The documents are numbered `v1`, `v2`, … and the numbering is the file's own, not the app's. The
+text deliberately names no version number: it says it describes the release that linked the reader
+here, which stays true without maintenance. A marketing version moves for reasons that have nothing
+to do with data - shipping 2.0 with no change to what is stored would otherwise strand a document
+claiming to cover "1.x".
 
 The store listing is different: it has one URL field and it must describe what a new installer
 gets, so it points at `index.html`, which is always a copy of the newest `v<n>.html`.
@@ -34,8 +40,8 @@ reach the people it applies to, including those on older builds.
 Only needed when a release changes what the app stores or sends. A release that changes nothing
 about data keeps the existing document and the existing URL.
 
-1. Write `v<n+1>.html` describing the new release, and state at the top which app versions it
-   covers. Leave `v<n>.html` in place, still describing its own versions.
+1. Write `v<n+1>.html` describing the new release. Leave `v<n>.html` in place, still describing
+   the releases that link to it.
 2. Copy it over `index.html`, so the store listing describes the current release.
 3. Link it from the site's landing page.
 4. **In the same commit, change the URL constant in the app** — on iOS that is
