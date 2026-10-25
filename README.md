@@ -11,9 +11,9 @@ The published privacy policies for GreenKey Universe apps, served by GitHub Page
 ```
 
 Each app and platform gets its own document, because the same app can process different data on
-different platforms. Schulte Table is the example: the Android build carries Firebase Auth,
-Analytics, Crashlytics, Performance and Play Billing; the iOS build has no accounts, no analytics
-and no crash reporting at all.
+different platforms. Schulte Table is the example: the Android build carries Firebase Analytics,
+Firebase Crashlytics and Play Billing, and backs its data up to the user's Google account; the iOS
+build has no analytics and no crash reporting at all. Neither has accounts.
 
 ## Why the app links to a versioned file
 
@@ -45,7 +45,9 @@ about data keeps the existing document and the existing URL.
 2. Copy it over `index.html`, so the store listing describes the current release.
 3. Link it from the site's landing page.
 4. **In the same commit, change the URL constant in the app** — on iOS that is
-   `PRIVACY_POLICY_URL` in `MainViewController.kt`.
+   `PRIVACY_POLICY_URL` in `MainViewController.kt`, on Android `privacy_policy_link` in
+   `app/src/main/res/values/strings_links.xml`. The app lives in another repository, so "the same
+   commit" means: push the policy, wait until GitHub Pages serves it, then commit the app change.
 
 Step 4 is the one that fails silently. Ship a release that collects something new while the
 constant still points at the old document, and the app links to a text saying that data is not
